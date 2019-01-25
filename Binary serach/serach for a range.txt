@@ -1,0 +1,101 @@
+Search for a Range
+Asked in:  
+Google
+Microsoft
+Given a sorted array of integers, find the starting and ending position of a given target value.
+
+Your algorithm’s runtime complexity must be in the order of O(log n).
+
+If the target is not found in the array, return [-1, -1].
+
+Example:
+
+Given [5, 7, 7, 8, 8, 10]
+
+and target value 8,
+
+return [3, 4].
+
+
+Sol
+
+
+public class Solution {
+    // DO NOT MODIFY THE LIST
+    public ArrayList<Integer> searchRange(final List<Integer> a, int b) {
+        
+        int first=bsearch(a,b);
+        int last=bsearchlast(a,b);
+        ArrayList<Integer> al=new ArrayList<>();
+        al.add(first);
+        al.add(last);
+        
+        return al;
+        
+        }
+        
+        int bsearch(List<Integer> a,int b)
+        {
+            
+            int n=a.size();
+            
+            int start=0;
+            int end=n-1;
+            int idx=-1;
+            while(start<=end)
+            {
+            int mid=(start+end)/2;
+            
+            if(a.get(mid)==b)
+            {
+                idx =mid;
+            }
+            if(a.get(mid)>=b)
+            {
+                end=mid-1;
+                
+                
+            }
+            else
+            {
+                   start=mid+1; 
+                
+            }
+            
+            }
+            return idx;
+        }
+        int bsearchlast(List<Integer> a,int b)
+        {
+             ArrayList<Integer> al=new ArrayList<>();
+            int n=a.size();
+            
+            int start=0;
+            int end=n-1;
+            int idx=-1;
+            while(start<=end)
+            {
+            int mid=(start+end)/2;
+            
+            if(a.get(mid)==b)
+            {
+                idx=mid;
+            }
+            if(a.get(mid)<=b)
+            {
+                 start=mid+1;
+            }
+            else
+            {
+                end=mid-1;
+               
+                
+            }
+            
+            }
+            return idx;
+        }
+}
+
+
+
